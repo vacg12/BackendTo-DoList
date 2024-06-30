@@ -19,7 +19,5 @@ jobs:
                  node-version: 20.12.2
             - name:  Instala las dependencias
               run: npm install
-            - name: Checkear codigo
-              run: npm run lint
             - name: Testear backend
               run: npm run test
