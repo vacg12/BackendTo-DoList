@@ -156,7 +156,7 @@ describe('test tasks endpoint /api/tareas', () => {
       expect(tasksAfter.length).toBe(tasksBefore.length);
     });
     });
-    describe('delete', () => {
+  describe('delete', () => {
       beforeAll(() => {
         //Borra todo los usuarios y contactos
         db.prepare('DELETE FROM users').run();

@@ -4,7 +4,9 @@ const usersRouter = require('./routes/users');
 const tasksRouter = require('./routes/tasks');
 const validateUser = require('./middlewares/validateUser');
 const app = express();
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.urlencoded({ extended: true }));

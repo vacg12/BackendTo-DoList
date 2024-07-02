@@ -97,5 +97,29 @@ tasksRouter.delete('/:id', async (req, res) => {
   }
 });
 
+tasksRouter.get('/:id', async (req, res) => {
+  try {
+    const statement = db.prepare(`
+   SELECT * FROM tasks
+   WHERE  user_id = ?
+  `);
+
+    const { task } = statement.all(Number(req.query.userId));
+    
+    // 4. Enviar la respuesta
+    return res.status(200).json(task);
+
+  } catch (error) {
+    console.log('ERROR', error);
+    if (error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
+      return res.status(409).json({
+        error: 'El usuario ya existe',
+      });
+    }
+  }
+});
+
+
+
 
 module.exports = tasksRouter;
